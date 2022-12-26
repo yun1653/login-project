@@ -1,15 +1,35 @@
+<<<<<<< HEAD
+'use strict';
+
+// 모듈
 const express = require('express');
 const app = express();
 
-app.get('/', (req, res) => {
-  res.send('여기는 루트입니다.');
-});
+// 라우팅
+const home = require('./routes/home/index');
 
-app.get('/login', (req, res) => {
-  // "/login"에서 앞에 있는 "/"는 꼭 넣어줘라. "/"은 root를 의미하는 것이다.
-  res.send('여기는 로그인 화면입니다.');
-});
+// 앱셋팅
+app.set('views', './views');
+app.set('view engine', 'ejs');
 
-app.listen(3000, () => {
-  console.log('서버 가동');
-});
+app.use('/', home);
+
+module.exports = app; // app를 내보내줘야 다른 모듈에서 이것을 받을 수 있다.
+=======
+'use strict';
+
+// 모듈
+const express = require('express');
+const app = express();
+
+// 라우팅
+const home = require('./routes/home/index');
+
+// 앱셋팅
+app.set('views', './views');
+app.set('view engine', 'ejs');
+
+app.use('/', home);
+
+module.exports = app; // app를 내보내줘야 다른 모듈에서 이것을 받을 수 있다.
+>>>>>>> loginP
