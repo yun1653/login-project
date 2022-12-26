@@ -1,31 +1,16 @@
-const http = require('http');
+'use strict';
 
-const app = http.createServer((req, res) => {
-  // 브라우저에게 한글로 처리된다는 것을 알려줘야 한다.
-  res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+// 모듈
+const express = require('express');
+const app = express();
 
-  if (req.url === '/') {
-    res.end('여기는 메인 화면 입니다.');
-  } else if (req.url === '/login') {
-    res.end('여기는 로그인 화면입니다. http서버');
-  }
-});
+// 라우팅
+const home = require('./routes/home/index');
 
-app.listen(3001, () => {
-  console.log('http 서버로 가동된 서버입니다.');
-});
+// 앱셋팅
+app.set('views', './views');
+app.set('view engine', 'ejs');
 
-// const express = require('express');
-// const app = express();
+app.use('/', home);
 
-// app.get('/', (req, res) => {
-//   res.send('여기는 루트 화면입니다.');
-// });
-
-// app.get('/login', (req, res) => {
-//   res.send('여기는 로그인 화면입니다.');
-// });
-
-// app.listen(3000, () => {
-//   console.log('서버 가동');
-// });
+module.exports = app; // app를 내보내줘야 다른 모듈에서 이것을 받을 수 있다.
