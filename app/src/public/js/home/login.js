@@ -11,8 +11,11 @@ function login() {
     id: id.value,
     psword: psword.value,
   };
-  console.log(req);
 
-  // TODO: 이제 값을 서버에게 전달해 보자
-  //fetch();
+  //서버에 req 전달, 미리 서버에 post로 '/login' 경로가 마련되어 있어야 아래 코드가 동작한다.
+  fetch('/login', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(req),
+  });
 }
