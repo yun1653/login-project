@@ -17,5 +17,7 @@ function login() {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(req),
-  });
+  }) //여기까지는 브라우저가 서버에 로그인 데이터를 넘겨주는 과정이고
+    .then((res) => res.json()) // 여기는 서버가 반응해서 응답해준 데이터를 받아서 json으로 변환하는 과정
+    .then((res) => console.log(res));
 }

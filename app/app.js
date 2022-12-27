@@ -6,7 +6,7 @@ const bodyParser = require('body-parser'); // request로 온 값의 body를 파�
 const app = express();
 
 // 라우팅
-const home = require('./src/routes/home/index');
+const home = require('./src/routes/home');
 
 // 앱셋팅
 app.set('views', './src/views');
