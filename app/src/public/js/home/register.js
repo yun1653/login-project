@@ -1,19 +1,23 @@
 'use strict';
 
 const id = document.querySelector('#id'),
+  name = document.querySelector('#name'),
   psword = document.querySelector('#psword'),
-  loginBtn = document.querySelector('#button');
+  confirmPsword = document.querySelector('#confirm-psword'),
+  registerBtn = document.querySelector('#button');
 
-loginBtn.addEventListener('click', login);
+registerBtn.addEventListener('click', register);
 
-function login() {
+function register() {
   const req = {
     id: id.value,
+    name: name.value,
     psword: psword.value,
+    confirmPsword: confirmPsword.value,
   };
 
-  //서버에 req 전달, 미리 서버에 post로 '/login' 경로가 마련되어 있어야 아래 코드가 동작한다.
-  fetch('/login', {
+  fetch('/register', {
+    // 백엔드에 API가 먼저 만들어진 상태에서 프론트가 개발되는 것이 좋다.
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(req),
@@ -21,12 +25,12 @@ function login() {
     .then((res) => res.json()) //여기는 서버가 반응해서 응답해준 데이터를 받아서 json으로 변환하는 과정
     .then((res) => {
       if (res.success) {
-        location.href = '/'; //root 경로로 이동 : 로그인 성공하면 이동
+        location.href = '/login'; // 성공하면 login 페이지로 이동
       } else {
         alert(res.msg);
       }
     })
     .catch((err) => {
-      console.error(new Error('로그인 중 에러 발생'));
+      console.error(new Error('회원가입 중 에러 발생'));
     });
 }
