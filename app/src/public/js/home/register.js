@@ -9,15 +9,18 @@ const id = document.querySelector('#id'),
 registerBtn.addEventListener('click', register);
 
 function register() {
+  if (!id.value) return alert('아이디를 입력해주세요');
+  if (psword.value !== confirmPsword.value)
+    return alert('비밀번호가 일치하지 않습니다.');
+
   const req = {
     id: id.value,
     name: name.value,
     psword: psword.value,
-    confirmPsword: confirmPsword.value,
   };
 
   fetch('/register', {
-    // 백엔드에 API가 먼저 만들어진 상태에서 프론트가 개발되는 것이 좋다.
+    // 백엔드에 API(routes/home/index.js의 post/process.register)가 먼저 만들어진 상태에서 프론트가 개발되는 것이 좋다.
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(req),
