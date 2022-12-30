@@ -3,7 +3,11 @@
 // 모듈
 const express = require('express');
 const bodyParser = require('body-parser'); // request로 온 값의 body를 파싱해줘서 보여주는 라이브러리, npm i body-parser -s 설치
+const dotenv = require('dotenv');
 const app = express();
+
+//환경변수
+dotenv.config();
 
 // 라우팅
 const home = require('./src/routes/home');

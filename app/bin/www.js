@@ -5,7 +5,7 @@
 
 // listen 하는 부분을 모듈화
 const app = require('../app'); // 상대 경로를 지정해줘야 한다. 즉 (..)상위 폴더로 가서 app.js를 불러온다.
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
   console.log('서버 가동');
