@@ -38,7 +38,7 @@ class User {
       }
       return { success: false, msg: '존재하지 않는 아이디입니다.' };
     } catch (err) {
-      return { success: false, msg: err };
+      return { success: false, err: err };
     }
   }
 
@@ -48,7 +48,7 @@ class User {
       const response = await UserStorage.save(client); //회원가입에서 넘어온 body를 UserStorage에 저장시킬 메소드 실행
       return response;
     } catch (err) {
-      return { success: false, msg: err };
+      return { success: false, err: err };
     }
   }
 }

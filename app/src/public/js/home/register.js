@@ -30,6 +30,7 @@ function register() {
       if (res.success) {
         location.href = '/login'; // 성공하면 login 페이지로 이동
       } else {
+        if (res.err) return alert(res.err);
         alert(res.msg);
       }
     })
